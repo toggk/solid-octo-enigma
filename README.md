@@ -1,85 +1,173 @@
 ## 📁 Project Structure
-```
 shopify-nextjs-store/
 ├── src/
 │   ├── app/
 │   │   ├── layout.js
 │   │   ├── page.js
+│   │   ├── globals.css
+│   │   ├── providers.jsx
 │   │   ├── products/
 │   │   │   ├── page.js
 │   │   │   └── [handle]/
-│   │   │       └── page.js
+│   │   │       ├── page.js
+│   │   │       └── loading.js
 │   │   ├── cart/
 │   │   │   └── page.js
 │   │   ├── checkout/
+│   │   │   ├── page.js
 │   │   │   └── success/
 │   │   │       └── page.js
+│   │   ├── categories/
+│   │   │   └── [category]/
+│   │   │       └── page.js
+│   │   ├── search/
+│   │   │   └── page.js
 │   │   └── api/
 │   │       └── shopify/
 │   │           ├── products/
 │   │           │   └── route.js
+│   │           ├── product/
+│   │           │   └── [handle]/
+│   │           │       └── route.js
 │   │           ├── search/
 │   │           │   └── route.js
 │   │           ├── cart/
-│   │           │   └── route.js
+│   │           │   ├── route.js
+│   │           │   └── [cartId]/
+│   │           │       └── route.js
 │   │           └── webhooks/
-│   │               └── route.js
+│   │               ├── orders/
+│   │               │   └── route.js
+│   │               └── products/
+│   │                   └── route.js
 │   ├── components/
 │   │   ├── layout/
 │   │   │   ├── Header.jsx
 │   │   │   ├── Footer.jsx
-│   │   │   └── Navigation.jsx
+│   │   │   ├── Navigation.jsx
+│   │   │   ├── MobileMenu.jsx
+│   │   │   └── Breadcrumbs.jsx
 │   │   ├── products/
 │   │   │   ├── ProductCard.jsx
 │   │   │   ├── ProductGrid.jsx
+│   │   │   ├── ProductList.jsx
 │   │   │   ├── ProductDetails.jsx
-│   │   │   └── ProductFilters.jsx
+│   │   │   ├── ProductGallery.jsx
+│   │   │   ├── ProductFilters.jsx
+│   │   │   ├── ProductSort.jsx
+│   │   │   ├── QuickView.jsx
+│   │   │   └── RelatedProducts.jsx
 │   │   ├── cart/
 │   │   │   ├── CartSidebar.jsx
 │   │   │   ├── CartItem.jsx
-│   │   │   └── CartSummary.jsx
+│   │   │   ├── CartSummary.jsx
+│   │   │   ├── CartEmpty.jsx
+│   │   │   └── MiniCart.jsx
+│   │   ├── checkout/
+│   │   │   ├── CheckoutForm.jsx
+│   │   │   ├── ShippingForm.jsx
+│   │   │   ├── PaymentForm.jsx
+│   │   │   └── OrderSummary.jsx
 │   │   ├── ui/
 │   │   │   ├── Button.jsx
 │   │   │   ├── Input.jsx
+│   │   │   ├── Select.jsx
 │   │   │   ├── Modal.jsx
-│   │   │   └── LoadingSpinner.jsx
+│   │   │   ├── Drawer.jsx
+│   │   │   ├── Toast.jsx
+│   │   │   ├── Badge.jsx
+│   │   │   ├── Card.jsx
+│   │   │   ├── LoadingSpinner.jsx
+│   │   │   ├── Skeleton.jsx
+│   │   │   └── ErrorBoundary.jsx
+│   │   ├── search/
+│   │   │   ├── SearchBar.jsx
+│   │   │   ├── SearchResults.jsx
+│   │   │   ├── SearchSuggestions.jsx
+│   │   │   └── SearchFilters.jsx
 │   │   └── common/
-│   │       ├── SearchBar.jsx
-│   │       └── ErrorBoundary.jsx
+│   │       ├── Image.jsx
+│   │       ├── Price.jsx
+│   │       ├── Rating.jsx
+│   │       ├── Pagination.jsx
+│   │       └── NotificationToast.jsx
+│   ├── store/
+│   │   ├── index.js
+│   │   ├── slices/
+│   │   │   ├── cartSlice.js
+│   │   │   ├── productsSlice.js
+│   │   │   ├── uiSlice.js
+│   │   │   ├── userSlice.js
+│   │   │   └── checkoutSlice.js
+│   │   ├── hooks/
+│   │   │   ├── useStore.js
+│   │   │   ├── useCart.js
+│   │   │   ├── useProducts.js
+│   │   │   └── useNotifications.js
+│   │   └── middleware/
+│   │       ├── logger.js
+│   │       └── persistence.js
 │   ├── lib/
 │   │   ├── shopify/
 │   │   │   ├── client.js
-│   │   │   ├── queries.js
-│   │   │   └── mutations.js
+│   │   │   ├── queries/
+│   │   │   │   ├── products.js
+│   │   │   │   ├── cart.js
+│   │   │   │   ├── collections.js
+│   │   │   │   └── customer.js
+│   │   │   ├── mutations/
+│   │   │   │   ├── cart.js
+│   │   │   │   ├── checkout.js
+│   │   │   │   └── customer.js
+│   │   │   ├── transformers.js
+│   │   │   └── constants.js
 │   │   ├── prisma.js
-│   │   └── utils.js
-│   ├── store/
-│   │   ├── index.js
-│   │   ├── reducers/
-│   │   │   ├── cartReducer.js
-│   │   │   ├── productsReducer.js
-│   │   │   └── uiReducer.js
-│   │   ├── actions/
-│   │   │   ├── cartActions.js 
-│   │   │   ├── productsActions.js
-│   │   │   └── uiActions.js
+│   │   ├── utils/
+│   │   │   ├── formatting.js
+│   │   │   ├── validation.js
+│   │   │   ├── price.js
+│   │   │   └── date.js
 │   │   └── hooks/
-│   │       └── useStore.js
+│   │       ├── useLocalStorage.js
+│   │       ├── useDebounce.js
+│   │       └── useMediaQuery.js
 │   ├── styles/
-│   │   └── globals.css
+│   │   ├── globals.css
+│   │   └── themes/
+│   │       ├── light.css
+│   │       └── dark.css
 │   └── types/
+│       ├── product.ts
+│       ├── cart.ts
+│       ├── checkout.ts
 │       └── index.ts
 ├── prisma/
 │   ├── schema.prisma
+│   ├── seed.js
 │   └── migrations/
 ├── public/
 │   ├── images/
-│   └── icons/
+│   │   ├── logo.svg
+│   │   └── placeholder.png
+│   ├── icons/
+│   └── fonts/
+├── tests/
+│   ├── unit/
+│   │   ├── components/
+│   │   ├── store/
+│   │   └── lib/
+│   ├── integration/
+│   └── e2e/
 ├── .env.local
 ├── .env.example
+├── .eslintrc.js
+├── .prettierrc
+├── .gitignore
 ├── next.config.js
-├── package.json
 ├── tailwind.config.js
+├── postcss.config.js
+├── package.json
+├── tsconfig.json (if using TypeScript)
 └── README.md
 ```
 ---
