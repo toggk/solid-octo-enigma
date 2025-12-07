@@ -1,4 +1,5 @@
 ## 📁 Project Structure
+```
 shopify-nextjs-store/
 ├── src/
 │   ├── app/
